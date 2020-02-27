@@ -1,0 +1,233 @@
+<html lang="en">
+  <head>
+		
+		<!-- Webpage Title -->
+    <title>Hello, world!</title>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		
+		<!-- JS -->		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script src="javascripts/jquery.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR-API-KEY"></script>
+    <script type="text/javascript" src="javascripts/jquery.googlemap.js"></script>
+  
+
+<script type="text/javascript">
+$.ajax({
+  type: "GET",
+  url: "https://maps.googleapis.com/maps/api/place/textsearch/json?query=%EC%84%A0%EB%A6%89&type=restaurant&key=AIzaSyAw6ZCm_RsPEMjnDgmlLNH1iAK88hFj0Ag",
+  data: {},
+  success: function(response){
+    let restaurant = response["results"]["row"];
+    for (let i = 0 ; i < restaurant.length; i++) {
+        let res_name = restaurant[i]['name'];
+    let res_rating = restaurant[i]['rating'];
+    let res_review = restaurant[i]['user_ratings_total']
+    let res_image = restaurant[i]['photos']
+        console.log(res_name, res_rating,res_review,res_image);
+    }
+  }
+})
+
+function make_media(res_name,res_rating,res_review,res_image) {
+  let temp_html = '<div class="media-body">\
+      <h5 class="mt-0 mb-1">'+res_name+'</h5>\
+       <div>\
+         <span class="fa fa-star checked"></span>\
+         <span class="fa fa-star checked"></span>\
+         <span class="fa fa-star checked"></span>\
+         <span class="fa fa-star checked"></span>\
+         <span class="fa fa-star"></span></small></p> \
+         <h7 style="display: inline;">/'+res_rating res_review+'</h7>\
+       </div>\
+     </div>\
+       <img class="ml-3" src="'+res_image+'"alt="Generic placeholder image">\
+       <img class="ml-3" src="'+res_image+'"alt="Generic placeholder image">\
+       <img class="ml-3" src="'+res_image+'"alt="Generic placeholder image">\
+       <img class="ml-3" src="'+res_image+'"alt="Generic placeholder image">\
+    </div>';
+    $('#media-box').append(temp_html);
+}
+
+</script>
+
+    
+  <style>
+
+  .wrap{
+    width: 700px;
+    text-align: center;
+    margin: auto;
+
+  }
+  img{
+    width:100px;
+    height: 100px;
+  }
+  .checked{
+    color : orange;
+  }
+
+  hr{
+    width:770px;
+    text-align: center;
+  }
+
+  h1{
+    color: #4F4F4F;
+    font-size: 60px;
+    font-weight: bold;
+    text-align: center;
+    margin-top:30px;
+  }
+
+ .right {
+  position: absolute;
+  right: 0px;
+  padding: 10px;
+
+}
+
+ .buttonst{
+  text-align: right; 
+  margin-right:200px;
+ }
+
+  </style>
+
+ </head>
+  <body>
+    <h1>RESTARURANT LIST</h1> 
+
+<div class="buttonst">
+ <div>
+  <div class="btn-group">
+   <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Filter
+   </button>
+   <div class="dropdown-menu right">
+    <a class="dropdown-item" href="#">Rate</a>
+    <a class="dropdown-item" href="#">Reviews</a>
+   </div>
+  </div>
+ </div>
+</div>
+
+    <hr>
+
+    <div id="media_box" class="media wrap">
+     <div class="media-body">
+      <h5 class="mt-0 mb-1">Media object</h5>
+       <div>
+         <span class="fa fa-star checked"></span>
+         <span class="fa fa-star checked"></span>
+         <span class="fa fa-star checked"></span>
+         <span class="fa fa-star checked"></span>
+         <span class="fa fa-star"></span></small></p> 
+         <h7 style="display: inline;">/ 4.0 (1,234)</h7>
+       </div>
+  
+     </div>
+       <img class="ml-3" src="https://i.pinimg.com/564x/69/15/d3/6915d3a430a287ce0dd4995caaaa44c3.jpg" alt="Generic placeholder image">
+       <img class="ml-3" src="https://i.pinimg.com/564x/69/15/d3/6915d3a430a287ce0dd4995caaaa44c3.jpg" alt="Generic placeholder image">
+       <img class="ml-3" src="https://i.pinimg.com/564x/69/15/d3/6915d3a430a287ce0dd4995caaaa44c3.jpg" alt="Generic placeholder image">
+       <img class="ml-3" src="https://i.pinimg.com/564x/69/15/d3/6915d3a430a287ce0dd4995caaaa44c3.jpg" alt="Generic placeholder image">
+    </div>
+    <p></p>
+    <hr>
+  <div class="media wrap">
+     <div class="media-body">
+      <h5 class="mt-0 mb-1">Media object</h5>
+       <div style="display: inline;">
+         <span class="fa fa-star checked"></span>
+         <span class="fa fa-star checked"></span>
+         <span class="fa fa-star checked"></span>
+         <span class="fa fa-star checked"></span>
+         <span class="fa fa-star"></span></small></p> 
+         <h7 style="display: inline;">/ 4.0 (1,234)</h7>
+       </div>
+  
+     </div>
+       <img class="ml-3" src="https://i.pinimg.com/564x/69/15/d3/6915d3a430a287ce0dd4995caaaa44c3.jpg" alt="Generic placeholder image">
+       <img class="ml-3" src="https://i.pinimg.com/564x/69/15/d3/6915d3a430a287ce0dd4995caaaa44c3.jpg" alt="Generic placeholder image">
+       <img class="ml-3" src="https://i.pinimg.com/564x/69/15/d3/6915d3a430a287ce0dd4995caaaa44c3.jpg" alt="Generic placeholder image">
+       <img class="ml-3" src="https://i.pinimg.com/564x/69/15/d3/6915d3a430a287ce0dd4995caaaa44c3.jpg" alt="Generic placeholder image">
+    </div>
+    <p></p>
+    <hr>
+
+  <div class="media wrap">
+     <div class="media-body">
+      <h5 class="mt-0 mb-1">Media object</h5>
+       <div style="display: inline;">
+         <span class="fa fa-star checked"></span>
+         <span class="fa fa-star checked"></span>
+         <span class="fa fa-star checked"></span>
+         <span class="fa fa-star checked"></span>
+         <span class="fa fa-star"></span></small></p> 
+         <h7 style="display: inline;">/ 4.0 (1,234)</h7>
+       </div>
+  
+     </div>
+       <img class="ml-3" src="https://i.pinimg.com/564x/69/15/d3/6915d3a430a287ce0dd4995caaaa44c3.jpg" alt="Generic placeholder image">
+       <img class="ml-3" src="https://i.pinimg.com/564x/69/15/d3/6915d3a430a287ce0dd4995caaaa44c3.jpg" alt="Generic placeholder image">
+       <img class="ml-3" src="https://i.pinimg.com/564x/69/15/d3/6915d3a430a287ce0dd4995caaaa44c3.jpg" alt="Generic placeholder image">
+       <img class="ml-3" src="https://i.pinimg.com/564x/69/15/d3/6915d3a430a287ce0dd4995caaaa44c3.jpg" alt="Generic placeholder image">
+    </div>
+    <p></p>
+    <hr>
+
+<div class="media wrap">
+     <div class="media-body">
+      <h5 class="mt-0 mb-1">Media object</h5>
+       <div style="display: inline;">
+         <span class="fa fa-star checked"></span>
+         <span class="fa fa-star checked"></span>
+         <span class="fa fa-star checked"></span>
+         <span class="fa fa-star checked"></span>
+         <span class="fa fa-star"></span></small></p> 
+         <h7 style="display: inline;">/ 4.0 (1,234)</h7>
+       </div>
+  
+     </div>
+       <img class="ml-3" src="https://i.pinimg.com/564x/69/15/d3/6915d3a430a287ce0dd4995caaaa44c3.jpg" alt="Generic placeholder image">
+       <img class="ml-3" src="https://i.pinimg.com/564x/69/15/d3/6915d3a430a287ce0dd4995caaaa44c3.jpg" alt="Generic placeholder image">
+       <img class="ml-3" src="https://i.pinimg.com/564x/69/15/d3/6915d3a430a287ce0dd4995caaaa44c3.jpg" alt="Generic placeholder image">
+       <img class="ml-3" src="https://i.pinimg.com/564x/69/15/d3/6915d3a430a287ce0dd4995caaaa44c3.jpg" alt="Generic placeholder image">
+    </div>
+    <p></p>
+    <hr>
+
+<div class="media wrap">
+     <div class="media-body">
+      <h5 class="mt-0 mb-1">Media object</h5>
+       <div style="display: inline;">
+         <span class="fa fa-star checked"></span>
+         <span class="fa fa-star checked"></span>
+         <span class="fa fa-star checked"></span>
+         <span class="fa fa-star checked"></span>
+         <span class="fa fa-star"></span></small></p> 
+         <h7 style="display: inline;">/ 4.0 (1,234)</h7>
+       </div>
+  
+     </div>
+       <img class="ml-3" src="https://i.pinimg.com/564x/69/15/d3/6915d3a430a287ce0dd4995caaaa44c3.jpg" alt="Generic placeholder image">
+       <img class="ml-3" src="https://i.pinimg.com/564x/69/15/d3/6915d3a430a287ce0dd4995caaaa44c3.jpg" alt="Generic placeholder image">
+       <img class="ml-3" src="https://i.pinimg.com/564x/69/15/d3/6915d3a430a287ce0dd4995caaaa44c3.jpg" alt="Generic placeholder image">
+       <img class="ml-3" src="https://i.pinimg.com/564x/69/15/d3/6915d3a430a287ce0dd4995caaaa44c3.jpg" alt="Generic placeholder image">
+    </div>
+    <p></p>
+    <hr>
+
+  </body>
+</html>
